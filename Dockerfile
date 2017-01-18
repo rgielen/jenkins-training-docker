@@ -1,6 +1,6 @@
 FROM jenkins:latest
 MAINTAINER "Rene Gielen" <rgielen@apache.org>
 
-COPY install-default-plugins.sh /usr/local/bin/install-default-plugins.sh
+COPY install-default-plugins-and-run.sh /usr/local/bin/install-default-plugins-and-run.sh
 
-ENTRYPOINT ["install-default-plugins.sh && /bin/tini", "--", "/usr/local/bin/jenkins.sh"]
+ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/install-default-plugins-and-run.sh", "/usr/local/bin/jenkins.sh"]
