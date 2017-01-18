@@ -27,3 +27,5 @@ install-plugins.sh \
         windows-slaves \
         workflow-aggregator \
         ws-cleanup
+
+$@
