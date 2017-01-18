@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 
 install-plugins.sh \
         ant \
@@ -28,4 +28,4 @@ install-plugins.sh \
         workflow-aggregator \
         ws-cleanup
 
-$@
+exec $@
