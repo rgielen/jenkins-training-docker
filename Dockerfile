@@ -1,30 +1,6 @@
 FROM jenkins:latest
 MAINTAINER "Rene Gielen" <rgielen@apache.org>
 
-RUN install-plugins.sh \
-        ant \
-        bitbucket \
-        bouncycastle-api \
-        build-timeout \
-        cloudbees-folder \
-        credentials-binding \
-        dashboard-view \
-        email-ext \
-        github \
-        github-organization-folder \
-        gradle \
-        icon-shim \
-        ldap \
-        m2release \
-        matrix-auth \
-        maven-dependency-update-trigger \
-        maven-plugin pipeline-maven \
-        pam-auth \
-        phing \
-        php \
-        ssh-slaves \
-        subversion \
-        timestamper \
-        windows-slaves \
-        workflow-aggregator \
-        ws-cleanup
+COPY install-default-plugins.sh /usr/local/bin/install-default-plugins.sh
+
+ENTRYPOINT ["install-default-plugins.sh && /bin/tini", "--", "/usr/local/bin/jenkins.sh"]
