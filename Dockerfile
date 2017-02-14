@@ -18,6 +18,31 @@ RUN apt-get update \
 
 USER ${user}
 
-COPY install-default-plugins-and-run.sh /usr/local/bin/install-default-plugins-and-run.sh
-
-ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/install-default-plugins-and-run.sh", "/usr/local/bin/jenkins.sh"]
+COPY plugins.txt /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/install-plugins.sh ant:latest \
+                                      bitbucket:latest \
+                                      bouncycastle-api:latest \
+                                      build-timeout:latest \
+                                      cloudbees-folder:latest \
+                                      credentials-binding:latest \
+                                      dashboard-view:latest \
+                                      email-ext:latest \
+                                      github:latest \
+                                      github-organization-folder:latest \
+                                      gradle:latest \
+                                      icon-shim:latest \
+                                      ldap:latest \
+                                      m2release:latest \
+                                      matrix-auth:latest \
+                                      maven-dependency-update-trigger:latest \
+                                      maven-plugin:latest \
+                                      pipeline-maven:latest \
+                                      pam-auth:latest \
+                                      phing:latest \
+                                      php:latest \
+                                      ssh-slaves:latest \
+                                      subversion:latest \
+                                      timestamper:latest \
+                                      windows-slaves:latest \
+                                      workflow-aggregator:latest \
+                                      ws-cleanup:latest
