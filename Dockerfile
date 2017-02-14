@@ -14,7 +14,9 @@ RUN apt-get update \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* \
       && rm -rf /tmp/* \
-      && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+      && curl -sSL https://get.docker.com/ | sh \
+      && usermod -aG docker ${user}
 
 USER ${user}
 
@@ -25,7 +27,6 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       cloudbees-folder:latest \
                                       credentials-binding:latest \
                                       dashboard-view:latest \
-                                      email-ext:latest \
                                       github:latest \
                                       github-organization-folder:latest \
                                       gradle:latest \
@@ -45,3 +46,5 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       windows-slaves:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest
+
+# Failed to download, temporarily removed: email-ext:latest \
