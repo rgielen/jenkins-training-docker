@@ -18,7 +18,6 @@ RUN apt-get update \
 
 USER ${user}
 
-COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       bitbucket:latest \
                                       bouncycastle-api:latest \
