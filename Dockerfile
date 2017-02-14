@@ -28,6 +28,7 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       blueocean:latest \
                                       bouncycastle-api:latest \
                                       build-timeout:latest \
+                                      chucknorris:latest \
                                       cloudbees-folder:latest \
                                       conditional-buildstep:latest \
                                       credentials-binding:latest \
