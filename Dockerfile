@@ -68,6 +68,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       maven-dependency-update-trigger:latest \
                                       maven-plugin:latest \
                                       mock-slave:latest \
+                                      nexus-artifact-uploader:latest \
                                       parameterized-trigger:latest \
                                       performance:latest \
                                       pipeline-githubnotify-step:latest \
