@@ -78,6 +78,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       php:latest \
                                       pmd:latest \
                                       rebuild:latest \
+                                      repository-connector:latest \
                                       run-condition:latest \
                                       ssh-slaves:latest \
                                       subversion:latest \
