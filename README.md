@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/rgielen/jenkins-training.svg)](https://microbadger.com/images/rgielen/jenkins-training "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/rgielen/jenkins-training.svg)](https://microbadger.com/images/rgielen/jenkins-training "Get your own version badge on microbadger.com")
 # Jenkins Training Docker Container
 
 A Jenkins container with auto-installed plugins.
