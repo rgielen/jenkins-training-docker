@@ -35,6 +35,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       bitbucket:latest \
                                       blueocean:latest \
                                       bouncycastle-api:latest \
+                                      build-monitor-plugin:latest \
                                       build-pipeline-plugin:latest \
                                       build-timeout:latest \
                                       checkstyle:latest \
