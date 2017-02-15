@@ -5,11 +5,11 @@
     <numExecutors>2</numExecutors>
     <mode>NORMAL</mode>
     <useSecurity>true</useSecurity>
-    <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
-    <!--
     <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
         <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
     </authorizationStrategy>
+    <!--
+    <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
     -->
     <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
         <disableSignup>true</disableSignup>
