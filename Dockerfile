@@ -20,20 +20,35 @@ RUN apt-get update \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user}
 
+# install maven
+ENV MAVEN_VERSION 3.3.9
+RUN cd /usr/local; wget -q -O - http://mirrors.ibiblio.org/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
+    ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
+
 USER ${user}
 
-RUN /usr/local/bin/install-plugins.sh ant:latest \
+RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
+                                      analysis-collector:latest \
+                                      ant:latest \
+                                      ansible:latest \
                                       ansicolor:latest \
                                       bitbucket:latest \
                                       blueocean:latest \
                                       bouncycastle-api:latest \
+                                      build-pipeline-plugin:latest \
                                       build-timeout:latest \
+                                      checkstyle:latest \
                                       chucknorris:latest \
                                       cloudbees-folder:latest \
                                       conditional-buildstep:latest \
                                       credentials-binding:latest \
                                       dashboard-view:latest \
                                       docker-build-publish:latest \
+                                      docker-build-step:latest \
+                                      docker-plugin:latest \
+                                      docker-slaves:latest \
+                                      dry:latest \
+                                      findbugs:latest \
                                       ghprb:latest \
                                       gitbucket:latest \
                                       github:latest \
@@ -52,21 +67,26 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       matrix-auth:latest \
                                       maven-dependency-update-trigger:latest \
                                       maven-plugin:latest \
+                                      mock-slave:latest \
                                       parameterized-trigger:latest \
+                                      performance:latest \
                                       pipeline-githubnotify-step:latest \
                                       pipeline-maven:latest \
                                       pam-auth:latest \
                                       phing:latest \
                                       php:latest \
+                                      pmd:latest \
                                       rebuild:latest \
                                       run-condition:latest \
                                       ssh-slaves:latest \
                                       subversion:latest \
                                       timestamper:latest \
                                       unleash:latest \
+                                      warnings:latest \
                                       windows-slaves:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest \
                                       xvfb:latest
-
 # Failed to download, temporarily removed: email-ext:latest \
+
+ADD JENKINS_HOME /usr/share/jenkins/ref
