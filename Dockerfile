@@ -8,7 +8,7 @@ ARG gid=1000
 
 USER root
 
-RUN apt-add-repository ppa:ansible/ansible
+RUN apt-add-repository ppa:ansible/ansible \
       && apt-get update \
       && apt-get install -y --no-install-recommends \
             php5-cli \
