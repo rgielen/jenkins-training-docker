@@ -8,17 +8,20 @@ ARG gid=1000
 
 USER root
 
-RUN apt-get update \
+RUN apt-add-repository ppa:ansible/ansible
+      && apt-get update \
       && apt-get install -y --no-install-recommends \
             php5-cli \
             sudo \
-      && apt-get clean \
-      && rm -rf /var/lib/apt/lists/* \
-      && rm -rf /tmp/* \
+            software-properties-common \
+            ansible \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user}
+      && apt-get clean \
+      && rm -rf /var/lib/apt/lists/* \
+      && rm -rf /tmp/* \
 
 # install maven
 ENV MAVEN_VERSION 3.3.9
