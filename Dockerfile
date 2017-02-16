@@ -30,6 +30,7 @@ USER ${user}
 RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       analysis-collector:latest \
                                       ant:latest \
+                                      antisamy-markup-formatter:latest \
                                       ansible:latest \
                                       ansicolor:latest \
                                       bitbucket:latest \
@@ -49,6 +50,8 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       docker-plugin:latest \
                                       docker-slaves:latest \
                                       dry:latest \
+                                      email-ext:latest \
+                                      external-monitor-job:latest \
                                       findbugs:latest \
                                       ghprb:latest \
                                       gitbucket:latest \
@@ -90,6 +93,5 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest \
                                       xvfb:latest
-# Failed to download, temporarily removed: email-ext:latest \
 
 ADD JENKINS_HOME /usr/share/jenkins/ref
