@@ -36,6 +36,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       ansicolor:latest \
                                       bitbucket:latest \
                                       blueocean:latest \
+                                      blueocean-pipeline-editor:latest \
                                       bouncycastle-api:latest \
                                       build-monitor-plugin:latest \
                                       build-pipeline-plugin:latest \
