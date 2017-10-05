@@ -5,6 +5,7 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
+ARG gid_docker=600
 
 USER root
 
@@ -14,6 +15,7 @@ RUN apt-get update \
             sudo \
             ansible \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+      && groupadd -g ${gid_docker} docker \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user} \
