@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins/jenkins:lts
 MAINTAINER "Rene Gielen" <rgielen@apache.org>
 
 ARG user=jenkins
@@ -96,6 +96,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       windows-slaves:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest \
-                                      xvfb:latest
+                                      xvfb:latest \
+                                      dependency-check-jenkins-plugin
 
 ADD JENKINS_HOME /usr/share/jenkins/ref
