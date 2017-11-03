@@ -70,6 +70,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       icon-shim:latest \
                                       job-dsl:latest \
                                       jobConfigHistory:latest \
+                                      junit-attachments:latest \
                                       ldap:latest \
                                       m2release:latest \
                                       matrix-auth:latest \
@@ -90,6 +91,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       run-condition:latest \
                                       ssh-slaves:latest \
                                       subversion:latest \
+                                      tasks:latest \
                                       timestamper:latest \
                                       unleash:latest \
                                       warnings:latest \
