@@ -49,8 +49,10 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       conditional-buildstep:latest \
                                       credentials-binding:latest \
                                       dashboard-view:latest \
+                                      dependency-check-jenkins-plugin \
                                       docker-build-publish:latest \
                                       docker-build-step:latest \
+                                      dockerhub-notification:latest \
                                       docker-plugin:latest \
                                       docker-slaves:latest \
                                       dry:latest \
@@ -98,7 +100,6 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       windows-slaves:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest \
-                                      xvfb:latest \
-                                      dependency-check-jenkins-plugin
+                                      xvfb:latest
 
 ADD JENKINS_HOME /usr/share/jenkins/ref
