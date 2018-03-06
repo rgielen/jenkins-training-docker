@@ -9,6 +9,8 @@ ARG gid_docker=600
 
 USER root
 
+ENV DOCKER_COMPOSE_VERSION 1.19.0
+
 RUN apt-get update \
       && apt-get install -y --no-install-recommends \
             php-cli \
@@ -19,6 +21,8 @@ RUN apt-get update \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user} \
+      && curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+      && chmod +x /usr/local/bin/docker-compose \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* \
       && rm -rf /tmp/*
