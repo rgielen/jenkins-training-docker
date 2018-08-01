@@ -9,7 +9,7 @@ ARG gid_docker=600
 
 USER root
 
-ENV DOCKER_COMPOSE_VERSION 1.19.0
+ENV DOCKER_COMPOSE_VERSION 1.22.0
 
 RUN apt-get update \
       && apt-get install -y --no-install-recommends \
@@ -28,7 +28,7 @@ RUN apt-get update \
       && rm -rf /tmp/*
 
 # install maven
-ENV MAVEN_VERSION 3.5.3
+ENV MAVEN_VERSION 3.5.4
 RUN cd /usr/local; wget -q -O - http://ftp.fau.de/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
     ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
 
