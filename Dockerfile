@@ -56,6 +56,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       dependency-check-jenkins-plugin \
                                       docker-build-publish:latest \
                                       docker-build-step:latest \
+                                      docker-compose-build-step:latest \
                                       dockerhub-notification:latest \
                                       docker-plugin:latest \
                                       docker-slaves:latest \
