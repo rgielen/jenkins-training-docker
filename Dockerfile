@@ -95,6 +95,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       pmd:latest \
                                       rebuild:latest \
                                       repository-connector:latest \
+                                      role-strategy:latest \
                                       run-condition:latest \
                                       ssh-slaves:latest \
                                       subversion:latest \
