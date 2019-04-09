@@ -11,7 +11,7 @@ USER root
 
 ENV DOCKER_COMPOSE_VERSION 1.24.0
 
-RUN apt-get update && apt-get upgrade \
+RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
             php-cli \
             sudo \
