@@ -9,9 +9,9 @@ ARG gid_docker=600
 
 USER root
 
-ENV DOCKER_COMPOSE_VERSION 1.22.0
+ENV DOCKER_COMPOSE_VERSION 1.24.0
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade \
       && apt-get install -y --no-install-recommends \
             php-cli \
             sudo \
