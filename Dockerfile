@@ -5,7 +5,6 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
-ARG gid_docker=600
 
 USER root
 
@@ -17,18 +16,19 @@ RUN apt-get update && apt-get upgrade -y \
             sudo \
             ansible \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-      && groupadd -g ${gid_docker} docker \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user} \
       && curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
       && chmod +x /usr/local/bin/docker-compose \
+      && chmod u+s $(which docker) \
+      && chmod u+s $(which docker-compose) \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* \
       && rm -rf /tmp/*
 
 # install maven
-ENV MAVEN_VERSION 3.5.4
+ENV MAVEN_VERSION 3.6.1
 RUN cd /usr/local; wget -q -O - http://ftp.fau.de/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
     ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
 
@@ -81,6 +81,7 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       ldap:latest \
                                       m2release:latest \
                                       matrix-auth:latest \
+                                      mattermost:latest \
                                       maven-dependency-update-trigger:latest \
                                       maven-plugin:latest \
                                       mock-slave:latest \
