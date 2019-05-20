@@ -12,6 +12,10 @@ Mainly used for training purposes, but serves as well as a nicely configured sta
 The image contains a lot of plugins pre-installed.
 It also contains docker binaries, such that docker images can be started "within" (sibling mode) the Jenkins container once the docker socket from host is mapped.
 
+**Important notice regarding Docker Support:** To make docker builds and runs available, I took the approach to make `docker` and `docker-compose` binaries suid root, which means they will be executed with a user id of 0 (root).
+This approach should work on all platforms including Docker Desktop for Mac / Windows, which is not the case when using a docker system group approach.
+Please be aware of the possible security issues involved with having highly privileged executables being run from Jenkins, as well as giving access to Docker deamon on the Docker host in general by mounting the docker socket into the Jenkins container!
+
 ## Usage
 
 ### Ensure Docker is running
