@@ -99,7 +99,10 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       repository-connector:latest \
                                       role-strategy:latest \
                                       run-condition:latest \
+                                      ssh:latest \
+                                      ssh-agent:latest \
                                       ssh-slaves:latest \
+                                      ssh-steps:latest \
                                       subversion:latest \
                                       tasks:latest \
                                       timestamper:latest \
