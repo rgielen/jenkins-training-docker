@@ -34,9 +34,7 @@ RUN cd /usr/local; wget -q -O - http://ftp.fau.de/apache/maven/maven-3/$MAVEN_VE
 
 USER ${user}
 
-RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
-                                      analysis-collector:latest \
-                                      ant:latest \
+RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       antisamy-markup-formatter:latest \
                                       ansible:latest \
                                       ansicolor:latest \
@@ -47,7 +45,6 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       build-monitor-plugin:latest \
                                       build-pipeline-plugin:latest \
                                       build-timeout:latest \
-                                      checkstyle:latest \
                                       chucknorris:latest \
                                       cloudbees-folder:latest \
                                       conditional-buildstep:latest \
@@ -60,10 +57,8 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       dockerhub-notification:latest \
                                       docker-plugin:latest \
                                       docker-slaves:latest \
-                                      dry:latest \
                                       email-ext:latest \
                                       external-monitor-job:latest \
-                                      findbugs:latest \
                                       ghprb:latest \
                                       gitbucket:latest \
                                       github:latest \
@@ -93,8 +88,6 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       pipeline-maven:latest \
                                       pam-auth:latest \
                                       phing:latest \
-                                      php:latest \
-                                      pmd:latest \
                                       rebuild:latest \
                                       repository-connector:latest \
                                       role-strategy:latest \
@@ -104,10 +97,9 @@ RUN /usr/local/bin/install-plugins.sh analysis-core:latest \
                                       ssh-slaves:latest \
                                       ssh-steps:latest \
                                       subversion:latest \
-                                      tasks:latest \
                                       timestamper:latest \
                                       unleash:latest \
-                                      warnings:latest \
+                                      warnings-ng:latest \
                                       windows-slaves:latest \
                                       workflow-aggregator:latest \
                                       ws-cleanup:latest \
