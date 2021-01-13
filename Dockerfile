@@ -60,13 +60,10 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       email-ext:latest \
                                       external-monitor-job:latest \
                                       ghprb:latest \
-                                      gitbucket:latest \
                                       github:latest \
                                       github-oauth:latest \
-                                      github-organization-folder:latest \
                                       gitlab-merge-request-jenkins:latest \
                                       gitlab-plugin:latest \
-                                      gogs-webhook:latest \
                                       gradle:latest \
                                       groovy:latest \
                                       icon-shim:latest \
