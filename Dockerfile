@@ -10,6 +10,8 @@ USER root
 
 ENV DOCKER_COMPOSE_VERSION 1.29.2
 
+COPY --from=eclipse-temurin:11-jdk-focal /opt/java/openjdk /opt/java/openjdk11
+
 RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
             php-cli \
@@ -28,7 +30,7 @@ RUN apt-get update && apt-get upgrade -y \
       && rm -rf /tmp/*
 
 # install maven
-ENV MAVEN_VERSION 3.6.3
+ENV MAVEN_VERSION 3.8.2
 RUN cd /usr/local; wget -q -O - http://ftp.fau.de/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
     ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
 
@@ -66,7 +68,6 @@ RUN /usr/local/bin/install-plugins.sh ant:latest \
                                       gitlab-plugin:latest \
                                       gradle:latest \
                                       groovy:latest \
-                                      icon-shim:latest \
                                       job-dsl:latest \
                                       jobConfigHistory:latest \
                                       junit-attachments:latest \
