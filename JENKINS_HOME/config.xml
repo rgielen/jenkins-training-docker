@@ -22,7 +22,12 @@
     <jdks>
         <jdk>
             <name>JDK8</name>
-            <home>/usr/lib/jvm/java-8-openjdk-amd64/</home>
+            <home>/opt/java/openjdk/</home>
+            <properties/>
+        </jdk>
+        <jdk>
+            <name>JDK11</name>
+            <home>/opt/java/openjdk11/</home>
             <properties/>
         </jdk>
     </jdks>
