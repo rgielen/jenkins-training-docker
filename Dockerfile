@@ -8,7 +8,7 @@ ARG gid=1000
 
 USER root
 
-ENV DOCKER_COMPOSE_VERSION 1.24.0
+ENV DOCKER_COMPOSE_VERSION 1.29.2
 
 RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
