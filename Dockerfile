@@ -1,3 +1,13 @@
+FROM eclipse-temurin:11-jdk-focal as jre-build
+
+RUN $JAVA_HOME/bin/jlink \
+         --add-modules java.base \
+         --strip-debug \
+         --no-man-pages \
+         --no-header-files \
+         --compress=2 \
+         --output /javaruntime
+
 FROM jenkins/jenkins:lts
 MAINTAINER "Rene Gielen" <rgielen@apache.org>
 
@@ -10,7 +20,7 @@ USER root
 
 ENV DOCKER_COMPOSE_VERSION 1.29.2
 
-COPY --from=eclipse-temurin:11-jdk-focal /opt/java/openjdk /opt/java/openjdk11
+COPY --from=jre-build /javaruntime /opt/java/openjdk11
 
 RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
