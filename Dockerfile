@@ -1,8 +1,7 @@
 FROM eclipse-temurin:11-jdk-focal as jre-build
 
 RUN $JAVA_HOME/bin/jlink \
-         --add-modules java.base \
-         --strip-debug \
+         --add-modules ALL-MODULE-PATH \
          --no-man-pages \
          --no-header-files \
          --compress=2 \
