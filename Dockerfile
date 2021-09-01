@@ -1,4 +1,5 @@
 FROM eclipse-temurin:11-jdk-focal as jre-build
+# docker buildx build --no-cache --pull --push --platform linux/arm64/v8,linux/amd64 --tag rgielen/jenkins-training .
 
 RUN $JAVA_HOME/bin/jlink \
          --add-modules ALL-MODULE-PATH \
@@ -26,6 +27,7 @@ RUN apt-get update && apt-get upgrade -y \
             php-cli \
             sudo \
             ansible \
+            wget \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
