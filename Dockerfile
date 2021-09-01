@@ -1,4 +1,8 @@
 FROM eclipse-temurin:11-jdk-focal as jre-build
+
+# Multi-Arch build example:
+# docker buildx create --name multiarch-builder
+# docker buildx use multiarch-builder
 # docker buildx build --no-cache --pull --push --platform linux/arm64/v8,linux/amd64 --tag rgielen/jenkins-training .
 
 RUN $JAVA_HOME/bin/jlink \
