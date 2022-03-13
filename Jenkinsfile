@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build') {
-        dockerImage = docker.build("rgielen/jenkins-training:${currentBuild.startTimeInMillis}-${env.BUILD_NUMBER}")
+        dockerImage = docker.build("rgielen/jenkins-training:${currentBuild.startTimeInMillis}-${env.BUILD_NUMBER}","--pull .")
     }
 
     stage('Push') {
