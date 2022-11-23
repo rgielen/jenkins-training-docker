@@ -27,11 +27,17 @@ ENV DOCKER_COMPOSE_VERSION 1.29.2
 COPY --from=jre-build /javaruntime /opt/java/openjdk11
 
 RUN apt-get update && apt-get upgrade -y \
+      && apt install -y wget apt-transport-https apt-utils \
+      && mkdir -p /etc/apt/keyrings  \
+      && wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | tee /etc/apt/keyrings/adoptium.asc \
+      && echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list \
+      && apt-get update \
       && apt-get install -y --no-install-recommends \
+            temurin-17-jdk \
+            temurin-19-jdk \
             php-cli \
             sudo \
             ansible \
-            wget \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
