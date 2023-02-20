@@ -71,9 +71,43 @@ RUN cd /usr/local; wget -q -O - https://dlcdn.apache.org/maven/maven-3/$MAVEN_VE
 
 USER ${user}
 
-RUN jenkins-plugin-cli --plugins ant \ 
-                                 ansicolor \
-                                 build-monitor-plugin
+RUN jenkins-plugin-cli --plugins ansicolor \
+                                 build-monitor-plugin \
+                                 blueocean \
+                                 blueocean-pipeline-editor \
+                                 build-timeout \
+                                 chucknorris \
+                                 conditional-buildstep \
+                                 dashboard-view \
+                                 dependency-check-jenkins-plugin \
+                                 docker-build-publish \
+                                 docker-build-step \
+                                 docker-compose-build-step \
+                                 dockerhub-notification \
+                                 docker-plugin \
+                                 external-monitor-job \
+                                 github-checks \
+                                 github-oauth \
+                                 gitlab-plugin \
+                                 groovy \
+                                 job-dsl \
+                                 jobConfigHistory \
+                                 junit-attachments \
+                                 m2release \
+                                 mattermost \
+                                 maven-plugin \
+                                 mock-slave \
+                                 nexus-artifact-uploader \
+                                 oic-auth \
+                                 parameterized-trigger \
+                                 performance \
+                                 pipeline-maven \
+                                 rebuild \
+                                 role-strategy \
+                                 ssh-agent \
+                                 ssh-steps \
+                                 warnings-ng \
+                                 xvfb
 
 #RUN /usr/local/bin/install-plugins.sh ant:latest \
 #                                      antisamy-markup-formatter:latest \
