@@ -106,6 +106,8 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  role-strategy \
                                  ssh-agent \
                                  ssh-steps \
+                                 versioncolumn \
+                                 versionnumber \
                                  warnings-ng \
                                  xvfb
 
