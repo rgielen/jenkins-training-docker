@@ -71,6 +71,10 @@ RUN cd /usr/local; wget -q -O - https://dlcdn.apache.org/maven/maven-3/$MAVEN_VE
 
 USER ${user}
 
+RUN jenkins-plugin-cli --plugins ant \ 
+                                 ansicolor \
+                                 build-monitor-plugin
+
 #RUN /usr/local/bin/install-plugins.sh ant:latest \
 #                                      antisamy-markup-formatter:latest \
 #                                      ansible:latest \
