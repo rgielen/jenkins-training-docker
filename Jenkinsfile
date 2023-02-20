@@ -8,7 +8,10 @@ node {
     }
 
     stage('Build') {
-        dockerImage = docker.build("rgielen/jenkins-training:${currentBuild.startTimeInMillis}-${env.BUILD_NUMBER}","--pull .")
+        env.VN = VersionNumber([
+            versionNumberString :'${BUILD_YEAR, XX}${BUILD_MONTH, XX}${BUILD_DAY, XX}-${BUILD_NUMBER}'
+        ])
+        dockerImage = docker.build("rgielen/jenkins-training:${env.VN}","--pull .")
     }
 
     stage('Push') {
