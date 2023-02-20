@@ -65,7 +65,7 @@ RUN apt-get update && apt-get upgrade -y \
       && rm -rf /tmp/*
 
 # install maven
-ENV MAVEN_VERSION 3.8.6
+ENV MAVEN_VERSION 3.9.0
 RUN cd /usr/local; wget -q -O - https://dlcdn.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
     ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
 
