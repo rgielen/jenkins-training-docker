@@ -71,12 +71,35 @@ RUN cd /usr/local; wget -q -O - https://dlcdn.apache.org/maven/maven-3/$MAVEN_VE
 
 USER ${user}
 
+# Suggested Plugins
+# https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/jenkins/install/platform-plugins.json
+RUN jenkins-plugin-cli --plugins cloudbees-folder \
+                                 antisamy-markup-formatter \
+                                 build-timeout \
+                                 credentials-binding \
+                                 timestamper \
+                                 ws-cleanup \
+                                 ant \
+                                 gradle \
+                                 workflow-aggregator \
+                                 pipeline-github-lib \
+                                 pipeline-stage-view \
+                                 git \
+                                 ssh-slaves \
+                                 matrix-auth \
+                                 pam-auth \
+                                 ldap \
+                                 email-ext \
+                                 mailer
+
+# Additional choice of useful plugins
 RUN jenkins-plugin-cli --plugins ansicolor \
                                  build-monitor-plugin \
-                                 build-timeout \
                                  chucknorris \
                                  conditional-buildstep \
+                                 config-file-provider \
                                  configuration-as-code \
+                                 copyartifact \
                                  dashboard-view \
                                  dependency-check-jenkins-plugin \
                                  docker-build-publish \
@@ -84,6 +107,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  docker-compose-build-step \
                                  dockerhub-notification \
                                  docker-plugin \
+                                 emailext-template \
                                  external-monitor-job \
                                  folder-auth \
                                  github-checks \
@@ -92,6 +116,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  groovy \
                                  job-dsl \
                                  jobConfigHistory \
+                                 junit \
                                  junit-attachments \
                                  m2release \
                                  mattermost \
