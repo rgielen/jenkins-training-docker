@@ -73,11 +73,10 @@ USER ${user}
 
 RUN jenkins-plugin-cli --plugins ansicolor \
                                  build-monitor-plugin \
-                                 blueocean \
-                                 blueocean-pipeline-editor \
                                  build-timeout \
                                  chucknorris \
                                  conditional-buildstep \
+                                 configuration-as-code \
                                  dashboard-view \
                                  dependency-check-jenkins-plugin \
                                  docker-build-publish \
@@ -86,6 +85,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  dockerhub-notification \
                                  docker-plugin \
                                  external-monitor-job \
+                                 folder-auth \
                                  github-checks \
                                  github-oauth \
                                  gitlab-plugin \
