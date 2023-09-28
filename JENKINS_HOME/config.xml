@@ -21,13 +21,18 @@
     <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
     <jdks>
         <jdk>
-            <name>JDK8</name>
-            <home>/opt/java/openjdk/</home>
+            <name>JDK11</name>
+            <home>/opt/java/jdk11/</home>
             <properties/>
         </jdk>
         <jdk>
-            <name>JDK11</name>
-            <home>/opt/java/openjdk11/</home>
+            <name>JDK17</name>
+            <home>/opt/java/jdk17/</home>
+            <properties/>
+        </jdk>
+        <jdk>
+            <name>JDK21</name>
+            <home>/opt/java/jdk21/</home>
             <properties/>
         </jdk>
     </jdks>

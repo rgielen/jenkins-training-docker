@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jdk-focal as jre-build
+FROM eclipse-temurin:11-jdk-focal as jdk11
 
 # Multi-Arch build example:
 # docker buildx create --name multiarch-builder
@@ -42,7 +42,7 @@ USER root
 
 ENV DOCKER_COMPOSE_VERSION 1.29.2
 
-COPY --from=jre-build /javaruntime /opt/java/openjdk11
+COPY --from=jdk11 /javaruntime /opt/java/jdk11
 COPY --from=jdk17 /javaruntime /opt/java/jdk17
 COPY --from=jdk21 /javaruntime /opt/java/jdk21
 
