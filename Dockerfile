@@ -21,7 +21,7 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM eclipse-temurin:19-jdk-focal as jdk19
+FROM azul/zulu-openjdk:21 as jdk21
 
 RUN $JAVA_HOME/bin/jlink \
          --add-modules ALL-MODULE-PATH \
@@ -44,7 +44,7 @@ ENV DOCKER_COMPOSE_VERSION 1.29.2
 
 COPY --from=jre-build /javaruntime /opt/java/openjdk11
 COPY --from=jdk17 /javaruntime /opt/java/jdk17
-COPY --from=jdk19 /javaruntime /opt/java/jdk19
+COPY --from=jdk21 /javaruntime /opt/java/jdk21
 
 RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
@@ -65,7 +65,7 @@ RUN apt-get update && apt-get upgrade -y \
       && rm -rf /tmp/*
 
 # install maven
-ENV MAVEN_VERSION 3.9.0
+ENV MAVEN_VERSION 3.9.4
 RUN cd /usr/local; wget -q -O - https://dlcdn.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xvfz - && \
     ln -sv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven
 
