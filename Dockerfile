@@ -57,6 +57,7 @@ RUN apt-get update && apt-get upgrade -y \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
       && usermod -aG docker ${user} \
       && curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+      && curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash \
       && chmod +x /usr/local/bin/docker-compose \
       && chmod u+s $(which docker) \
       && chmod u+s $(which docker-compose) \
