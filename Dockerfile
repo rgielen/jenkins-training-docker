@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jdk-focal as jdk11
+FROM eclipse-temurin:11-jdk-jammy as jdk11
 
 # Multi-Arch build example:
 # docker buildx create --name multiarch-builder
@@ -12,7 +12,7 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM eclipse-temurin:17-jdk-focal as jdk17
+FROM eclipse-temurin:17-jdk-jammy as jdk17
 
 RUN $JAVA_HOME/bin/jlink \
          --add-modules ALL-MODULE-PATH \
@@ -21,7 +21,7 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM azul/zulu-openjdk:21 as jdk21
+FROM eclipse-temurin:21-jdk-jammy as jdk21
 
 RUN $JAVA_HOME/bin/jlink \
          --add-modules ALL-MODULE-PATH \
@@ -30,8 +30,8 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM jenkins/jenkins:lts
-MAINTAINER "Rene Gielen" <rgielen@apache.org>
+FROM jenkins/jenkins:lts-jdk17
+LABEL maintainer="Rene Gielen <rgielen@apache.org>"
 
 ARG user=jenkins
 ARG group=jenkins
