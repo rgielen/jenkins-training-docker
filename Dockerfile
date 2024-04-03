@@ -108,6 +108,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  docker-compose-build-step \
                                  dockerhub-notification \
                                  docker-plugin \
+                                 docker-workflow \
                                  emailext-template \
                                  external-monitor-job \
                                  folder-auth \
