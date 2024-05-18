@@ -30,7 +30,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: user/app:latest
+          tags: rgielen/jenkins-training:latest
+          platforms: linux/amd64,linux/arm64
       -
         name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
