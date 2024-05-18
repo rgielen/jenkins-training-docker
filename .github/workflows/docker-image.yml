@@ -52,19 +52,20 @@ jobs:
         id: jenkins_version
         run: |
           export JENKINS_VERSION=$(regctl image config jenkins/jenkins:lts --format '{{ index .Config.Labels "org.opencontainers.image.version" }}' --platform linux/amd64)
-          echo "::set-output name=version::$JENKINS_VERSION"
+          echo "Version is $JENKINS_VERSION"
+          echo "ver=$JENKINS_VERSION" >> $GITHUB_OUTPUT
       -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:lts
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}-${{ github.run_number }}
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}-${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:lts
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}-${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}-${{ github.run_number }}
           platforms: linux/amd64,linux/arm64
       -
         name: Docker Hub Description
