@@ -64,8 +64,8 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:lts
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}-${{ github.run_number }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}-${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.outputs.ver }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.outputs.ver }}-${{ github.run_number }}
           platforms: linux/amd64,linux/arm64
       -
         name: Docker Hub Description
