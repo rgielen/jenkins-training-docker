@@ -6,6 +6,7 @@ on:
       - 'master'
 jobs:
   # https://github.com/marketplace/actions/build-and-push-docker-images
+  # https://github.com/marketplace/actions/docker-image-update-checker
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -17,8 +18,11 @@ jobs:
         run: echo ${{ github.run_number }}
       - name: Output Run Attempt
         run: echo ${{ github.run_attempt }}
-      -
-        name: Check out repository code
+      - name: Get current date
+        # https://stackoverflow.com/questions/60942067/get-current-date-and-time-in-github-workflows
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d')"
+      - name: Check out repository code
         uses: actions/checkout@v4
       -
         name: Set up QEMU
@@ -32,13 +36,35 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - 
+        name: Install regctl
+        # https://github.com/regclient/actions
+        uses: regclient/actions/regctl-installer@main
+      -
+        name: regctl login
+        uses: regclient/actions/regctl-login@main
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Determine Jenkins Version
+        id: jenkins_version
+        run: |
+          export JENKINS_VERSION=$(regctl image config jenkins/jenkins:lts --format '{{ index .Config.Labels "org.opencontainers.image.version" }}' --platform linux/amd64)
+          echo "::set-output name=version::$JENKINS_VERSION"
       -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/jenkins-training:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:lts
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.date.outputs.date }}-${{ github.run_number }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.jenkins_version.version }}-${{ github.run_number }}
           platforms: linux/amd64,linux/arm64
       -
         name: Docker Hub Description
