@@ -1,9 +1,7 @@
-name: Docker Image CI
+name: Docker Image Build and Push
 run-name: ${{ github.actor }} is building the container image 🚀
 on:
-  push:
-    branches:
-      - 'master'
+  workflow_call:
 jobs:
   # https://github.com/marketplace/actions/build-and-push-docker-images
   # https://github.com/marketplace/actions/docker-image-update-checker
