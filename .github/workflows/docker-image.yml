@@ -21,7 +21,7 @@ jobs:
       - name: Get current date
         # https://stackoverflow.com/questions/60942067/get-current-date-and-time-in-github-workflows
         id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d')"
+        run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
       - name: Check out repository code
         uses: actions/checkout@v4
       -
