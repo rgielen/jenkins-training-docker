@@ -35,6 +35,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Install regctl
+        # https://github.com/regclient/actions
+        uses: regclient/actions/regctl-installer@main
+      -
+        name: regctl login
+        uses: regclient/actions/regctl-login@main
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
         name: Determine Jenkins Version
         id: jenkins_version
         run: |

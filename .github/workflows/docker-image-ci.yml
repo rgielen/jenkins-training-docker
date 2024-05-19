@@ -19,3 +19,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   call-image-build:
      uses: ./.github/workflows/docker-image-dummy.yml
+     secrets: inherit
