@@ -1,0 +1,37 @@
+name: Check for new Jenkins LTS upstream image version
+on:
+  schedule:
+    - cron: "10 45 * * *"
+  workflow_dispatch:
+
+jobs:
+  # TODO: Use pull request + auto-merge
+  # https://github.com/peter-evans/create-pull-request
+  # https://github.com/marketplace/actions/merge-pull-requests-automerge-action
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker Image Update Checker
+        # https://www.flypenguin.de/2021/07/30/auto-rebuild-docker-images-if-base-image-changes-using-github-actions/
+        # https://github.com/marketplace/actions/docker-image-update-checker
+        id: baseupdatecheck
+        uses: lucacome/docker-image-update-checker@v1.2.1
+        with:
+          base-image: jenkins/jenkins:lts
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:lts
+
+      - name: Issue date stamp to change detection file
+        run: echo "$(date +'%Y%m%d')" > ./.last_upstream_image_update
+        if: steps.baseupdatecheck.outputs.needs-updating == 'true'
+
+      - name: Commit changes to repository
+        # https://github.com/stefanzweifel/git-auto-commit-action
+        uses: stefanzweifel/git-auto-commit-action@v5
+        if: steps.baseupdatecheck.outputs.needs-updating == 'true'
+        with:
+          commit_message: "Change of upstream image detected."
