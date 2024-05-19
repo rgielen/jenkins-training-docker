@@ -1,0 +1,21 @@
+name: Docker Image CI
+run-name: ${{ github.actor }} issues CI build of container image 🚀
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  display-info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Output Run ID
+        run: echo ${{ github.run_id }}
+      - name: Output Run Number
+        run: echo ${{ github.run_number }}
+      - name: Output Run Attempt
+        run: echo ${{ github.run_attempt }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  call-image-build:
+     uses: ./.github/workflows/docker-image-dummy.yml
