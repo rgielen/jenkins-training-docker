@@ -18,21 +18,6 @@ Please be aware of the possible security issues involved with having highly priv
 
 ## Usage
 
-### Ensure Docker is running
-
-#### Using Docker Toolbox
-
-When running with Docker Toolbox, open Docker Quickstart Terminal and wait until everything is set up.
-
-You can also use `docker-machine start` in a terminal of your choice.
-To continue in this terminal, don't forget to follow the instructions on screen - basically the same instructions you get when running `docker-machine env default`.
-Be sure to execute the part found below `# Run this command to to configure your shell`.
-
-#### Using Docker Native
-
-Ensure docker daemon is started. 
-Everything should be ready to go then. 
-
 ### Start Jenkins Container
 
 Suggested commandline:
