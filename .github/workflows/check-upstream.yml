@@ -1,7 +1,7 @@
 name: Check for new Jenkins LTS upstream image version
 on:
   schedule:
-    - cron: "10 45 * * *"
+    - cron: '9 15 * * *'
   workflow_dispatch:
 
 jobs:
