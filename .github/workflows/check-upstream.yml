@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Docker Image Update Checker
         # https://www.flypenguin.de/2021/07/30/auto-rebuild-docker-images-if-base-image-changes-using-github-actions/
