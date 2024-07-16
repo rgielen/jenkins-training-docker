@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'master'
+  repository_dispatch:
+    types: [upstream-update-event]
 jobs:
   call-image-build:
      uses: ./.github/workflows/docker-image-build.yml
