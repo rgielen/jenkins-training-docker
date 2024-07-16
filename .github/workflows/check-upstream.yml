@@ -34,3 +34,10 @@ jobs:
         if: steps.baseupdatecheck.outputs.needs-updating == 'true'
         with:
           commit_message: "Change of upstream image detected."
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        if: steps.baseupdatecheck.outputs.needs-updating == 'true'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
