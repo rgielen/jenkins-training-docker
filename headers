@@ -1,12 +1,12 @@
 HTTP/2 200 
-date: Thu, 18 Sep 2025 15:13:22 GMT
+date: Fri, 19 Sep 2025 15:13:25 GMT
 content-type: application/vnd.oci.image.index.v1+json
 content-length: 1609
-docker-content-digest: sha256:95e9047ff3eceb3aa083c42c95ed89c3fec54011195883bbec70fcffbc92d818
+docker-content-digest: sha256:e54c213c02888a77562686d86817bd0a64d88abd0929b9004dc6a3c2ce0b763f
 docker-distribution-api-version: registry/2.0
-etag: "sha256:95e9047ff3eceb3aa083c42c95ed89c3fec54011195883bbec70fcffbc92d818"
+etag: "sha256:e54c213c02888a77562686d86817bd0a64d88abd0929b9004dc6a3c2ce0b763f"
 strict-transport-security: max-age=31536000
 ratelimit-limit: 100;w=21600
-ratelimit-remaining: 85;w=21600
-docker-ratelimit-source: 74.235.126.89
+ratelimit-remaining: 92;w=21600
+docker-ratelimit-source: 172.182.195.178
 
