@@ -23,12 +23,7 @@ RUN $JAVA_HOME/bin/jlink \
 
 FROM eclipse-temurin:25-jdk-jammy as jdk25
 
-RUN $JAVA_HOME/bin/jlink \
-         --add-modules ALL-MODULE-PATH \
-         --no-man-pages \
-         --no-header-files \
-         --compress=2 \
-         --output /javaruntime
+RUN cp -a $JAVA_HOME /javaruntime 
 
 FROM jenkins/jenkins:lts-jdk21
 LABEL maintainer="Rene Gielen <rgielen@apache.org>"
