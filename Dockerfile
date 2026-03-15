@@ -21,7 +21,7 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM eclipse-temurin:21-jdk-jammy as jdk21
+FROM eclipse-temurin:25-jdk-jammy as jdk25
 
 RUN $JAVA_HOME/bin/jlink \
          --add-modules ALL-MODULE-PATH \
@@ -30,7 +30,7 @@ RUN $JAVA_HOME/bin/jlink \
          --compress=2 \
          --output /javaruntime
 
-FROM jenkins/jenkins:lts-jdk17
+FROM jenkins/jenkins:lts-jdk21
 LABEL maintainer="Rene Gielen <rgielen@apache.org>"
 
 ARG user=jenkins
@@ -44,7 +44,7 @@ ENV DOCKER_COMPOSE_VERSION 1.29.2
 
 COPY --from=jdk11 /javaruntime /opt/java/jdk11
 COPY --from=jdk17 /javaruntime /opt/java/jdk17
-COPY --from=jdk21 /javaruntime /opt/java/jdk21
+COPY --from=jdk25 /javaruntime /opt/java/jdk25
 
 RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y --no-install-recommends \
