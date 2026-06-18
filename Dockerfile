@@ -102,7 +102,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  configuration-as-code \
                                  copyartifact \
                                  coverage \
-      dashboard-view \
+                                 dashboard-view \
                                  dependency-check-jenkins-plugin \
                                  docker-build-publish \
                                  docker-build-step \
@@ -130,6 +130,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  oic-auth \
                                  parameterized-trigger \
                                  performance \
+                                 pipeline-graph-view \
                                  pipeline-maven \
                                  rebuild \
                                  role-strategy \
