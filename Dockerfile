@@ -47,6 +47,11 @@ RUN apt-get update && apt-get upgrade -y \
             sudo \
             ansible \
             wget \
+            build-essential g++ make git curl ca-certificates \
+            libgtest-dev libgmock-dev \
+            cppcheck clang-tidy clang-format clang-tools \
+            gcovr lcov bear \
+            python3 python3-pytest python3-requests \
       && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
       && curl -sSL https://get.docker.com/ | sh \
       && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
@@ -96,7 +101,8 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  config-file-provider \
                                  configuration-as-code \
                                  copyartifact \
-                                 dashboard-view \
+                                 coverage \
+      dashboard-view \
                                  dependency-check-jenkins-plugin \
                                  docker-build-publish \
                                  docker-build-step \
@@ -111,6 +117,7 @@ RUN jenkins-plugin-cli --plugins ansicolor \
                                  github-oauth \
                                  gitlab-plugin \
                                  groovy \
+                                 htmlpublisher \
                                  job-dsl \
                                  jobConfigHistory \
                                  junit \
